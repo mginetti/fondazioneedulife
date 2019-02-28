@@ -18,7 +18,7 @@ header {
   text-align: center;
 }
 
-.content {
+.content{
   width: 94%;
   margin: 4em auto;
   font-size: 20px;
@@ -31,13 +31,14 @@ nav {
   width: 100%;
   line-height: 60px;
   text-align: center;
+  z-index: +1;  
 }
 
 nav ul {
-  line-height: 60px;
+  line-height: 40px;
   list-style: none;
   background: rgba(75, 75, 75, 0);
-  overflow: hidden;
+  overflow: auto;
   color: firebrick;
   padding: 0;
   text-align: center;
@@ -48,6 +49,7 @@ nav ul {
 
 nav.black ul {
   background: grey;
+  
 }
 
 nav ul li {
