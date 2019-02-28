@@ -73,6 +73,32 @@ nav ul li a {
   display: none;
 }
 
+.project{
+  text-align: center;
+}
+
+.logo{
+  background-image: url(../media/img/logo-pyf.png);
+  background-position: center;
+  background-size: cover;
+  height: 250px;
+  width: 250px;
+  border-radius: 50%;
+  margin: auto;
+  border: 1px solid grey;
+}
+
+footer{
+  border-top: 1px solid grey;
+  padding: 5px;
+}
+
+.img-footer{
+
+  width: 100%;
+}
+
+
 @media(max-width: 786px) {
 
   nav ul {
@@ -99,4 +125,8 @@ nav ul li a {
         display: block;
   }
 
+  .logo{
+    height: 150px;
+    width: 150px;
+  }
 }
