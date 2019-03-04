@@ -7,6 +7,7 @@ html, body {
 body {
   font-family: "Helvetica Neue",sans-serif;
   font-weight: lighter;
+  text-align: center;
 }
 
 header {
@@ -15,15 +16,16 @@ header {
 }
 
 .wrapper{
+  width: 100%;  
   text-align: center;
 }
 
 .content{
-  width: 94%;
-  margin: 4em auto;
+  width: 100%;
+  margin: auto;
   font-size: 20px;
   line-height: 30px;
-  text-align: justify;
+  text-align: center;
 }
 
 nav {
@@ -73,6 +75,14 @@ nav ul li a {
   cursor: pointer;
   color: firebrick;
   display: none;
+}
+
+.box{
+  background-color: brown;
+  height: 150px;
+  padding: 5px;
+
+  margin-bottom: 5px;
 }
 
 .project{
