@@ -13,6 +13,10 @@ $(document).ready(function () {
           }
       };
 
+       
+
+    
+
       // Find all data-toggle="sticky-onscroll" elements
       $('[data-toggle="sticky-onscroll"]').each(function () {
           var sticky = $(this);
