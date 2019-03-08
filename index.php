@@ -1,18 +1,17 @@
-<?php
-      
+<?php  
       function box(){
             $conn = new mysqli("localhost", "root", "", "fondazioneedu");
 
             //Controllo errori di connessione
             if ($conn->connect_error) {
-              die("Errore di connessione al database");
+                  die("Errore di connessione al database");
             }
     
             //Creazione query
-                        $query = "SELECT * FROM video";
+            $query = "SELECT * FROM video";
     
             //Esecuzione query
-                        $result = $conn->query($query);
+            $result = $conn->query($query);
     
             //Controllo risultato query
                         
@@ -26,11 +25,11 @@
                                                 <source src= "' . $row['path'] . ' " >
                                           </video>
                                           <div class="play">
-                                                <button onclick="playPause("video'. $row['id'] .'")">
+                                                <a data-toggle="modal" class="btn btn-primary" data-target="#finestra'. $row['id'] .'">
                                                       <i class="material-icons md-48" href="#">
                                                             play_circle_outline
                                                       </i>
-                                                </button>  
+                                                </a>  
                                           </div>
                                     </div>
                               </div>
@@ -38,17 +37,52 @@
                   }
             }      
             $conn->close();
-            
-            
-            
-
-
-
-            
       }
 
-      
-      
+      function modal(){
+            $conn = new mysqli("localhost", "root", "", "fondazioneedu");
+
+            //Controllo errori di connessione
+            if ($conn->connect_error) {
+              die("Errore di connessione al database");
+            }
+    
+            //Creazione query
+            $query = "SELECT * FROM video";
+    
+            //Esecuzione query
+            $result = $conn->query($query);
+    
+            //Controllo risultato query
+                        
+            if ($result->num_rows > 0) {
+                  while($row = $result->fetch_assoc()) {
+                        echo 
+                              '
+                              <div class="modal" id="finestra'. $row['id'] .'">
+
+                                    <div class="modal-dialog">
+                                          <div class="modal-content">
+
+                                                <div class="modal-header">
+                                                      <H4 class="modal-title">Titolo della finestra</H4>
+                                                      <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                                </div>
+
+                                                <div class="modal-body">
+                                                      <video width="100%" controls autoplay>
+                                                            <source src="'. $row['path'] .'">
+                                                      </video>
+                                                </div>
+
+                                          </div>
+                                    </div>
+                              </div>
+                        ';
+                  }
+            }      
+            $conn->close();
+      }
 ?>
 
 <!DOCTYPE html>
@@ -72,20 +106,19 @@
 
       <div class="container-fluid">
             <header>
-                  <div class="logo">
-                        <img class="edu-logo" src="media/img/logo.png" alt="">
-                  </div>
+                  
                   <nav class="navbar  navbar-expand-lg navbar-light top-navbar" data-toggle="sticky-onscroll">
                         <div class="container">
                               <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                                     <span class="navbar-toggler-icon"></span>
                               </button>
-      
+
                               <div class="collapse navbar-collapse justify-content-center" id="navbarSupportedContent">
+                              
                                     <ul class="navbar-nav pull-left">
-                                          <li class="nav-item">
+                                          <div class="logo">
                                                 <img class="edu-logo" src="media/img/logo.png" alt="">
-                                          </li>
+                                          </div>
                                           <li class="nav-item">
                                                 <a class="nav-link active" href="#">Home</a>
                                           </li>
@@ -120,8 +153,8 @@
 
                         <?= box() ?>
 
-                  
                   </div>
+
             </div>
             
             
@@ -173,16 +206,9 @@
             
       </footer>
 
-      <script>
-      function playPause(video) {
-        var myVideo = document.getElementById(video); 
-        if (myVideo.paused) 
-            myVideo.play(); 
-        else 
-            myVideo.pause(); 
-    } </script>
-
       <script src="js/script.js"></script>
-      
+
+      <?= modal() ?>
+
       </body>
  </html>
