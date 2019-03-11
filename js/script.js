@@ -13,10 +13,6 @@ $(document).ready(function () {
           }
       };
 
-       
-
-    
-
       // Find all data-toggle="sticky-onscroll" elements
       $('[data-toggle="sticky-onscroll"]').each(function () {
           var sticky = $(this);
@@ -32,4 +28,9 @@ $(document).ready(function () {
           // On page load
           stickyToggle(sticky, stickyWrapper, $(window));
       });
+
+      $('#demo').carousel({
+        interval: 2000,
+        cycle: true
+      }); 
   });

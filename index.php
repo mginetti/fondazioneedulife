@@ -19,9 +19,9 @@
                   while($row = $result->fetch_assoc()) {
                         echo 
                               '
-                              <div class="col-lg-3 col-md-3 col-sm-12">
+                              <div class="box col-lg-3 col-md-3 col-sm-12">
                                     <div class="box-video">
-                                          <video id="video'. $row['id'] .'" height="150px">
+                                          <video class="video" id="video'. $row['id'] .'"; height="150px";>
                                                 <source src= "' . $row['path'] . ' " >
                                           </video>
                                           <div class="play">
@@ -70,7 +70,7 @@
                                                 </div>
 
                                                 <div class="modal-body">
-                                                      <video width="100%" controls autoplay>
+                                                      <video width="100%" controls>
                                                             <source src="'. $row['path'] .'">
                                                       </video>
                                                 </div>
@@ -83,6 +83,64 @@
             }      
             $conn->close();
       }
+
+      function carouselIndicators(){
+            $directory = "media/img/carousel/";
+            $cont = 1;
+            // Apriamo una directory e leggiamone il contenuto.
+            if (is_dir($directory)) {
+            //Apro l'oggetto directory
+                  if ($directory_handle = opendir($directory)) {
+                  //Scorro l'oggetto fino a quando non è termnato cioè false
+                        
+                        while (($file = readdir($directory_handle)) !== false) {
+                        //Se l'elemento trovato è diverso da una directory
+                        //o dagli elementi . e .. lo visualizzo a schermo
+                              if((!is_dir($file))&($file!=".")&($file!="..")){
+                                    
+                                    echo '
+                                    <li data-target="#demo" data-slide-to="'. $cont .'"></li>
+                                    ';
+                                    $cont++;
+                              }
+                              
+                        }
+                  //Chiudo la lettura della directory.
+                  closedir($directory_handle);
+                  }
+            }
+      }
+      
+
+      function carousel(){
+            //Imposto la directory da leggere
+            $directory = "media/img/carousel/";
+            // Apriamo una directory e leggiamone il contenuto.
+            if (is_dir($directory)) {
+            //Apro l'oggetto directory
+                  if ($directory_handle = opendir($directory)) {
+                  //Scorro l'oggetto fino a quando non è termnato cioè false
+                        while (($file = readdir($directory_handle)) !== false) {
+                        //Se l'elemento trovato è diverso da una directory
+                        //o dagli elementi . e .. lo visualizzo a schermo
+                              if((!is_dir($file))&($file!=".")&($file!="..")){
+                                    
+                                    echo '
+                                    <div class="carousel-item">
+                                          <img class="img-carousel" src="'. $directory, $file .'" alt="Los Angeles">
+                                          <div class="carousel-caption">
+                                                <h3>Los Angeles</h3>
+                                                <p>We had such a great time in LA!</p>
+                                          </div>
+                                    </div>
+                                    ';
+                              }
+                        }
+                  //Chiudo la lettura della directory.
+                  closedir($directory_handle);
+                  }
+            }
+      }     
 ?>
 
 <!DOCTYPE html>
@@ -150,6 +208,7 @@
             <div class="container ">
         
                   <div class="row">
+                        
 
                         <?= box() ?>
 
@@ -160,6 +219,36 @@
             
             </div>
 
+            <div id="demo" class="carousel slide" data-ride="carousel">
+
+                  <!-- Indicators -->
+                  <ul class="carousel-indicators">
+                        <li data-target="#demo" data-slide-to="0" class="active"></li>
+                        <?= carouselIndicators() ?>
+                  </ul>
+
+                  <!-- The slideshow -->
+                  <div class="carousel-inner">
+                        <div class="carousel-item active">
+                              <img class="img-carousel" src="media/img/img1.jpeg" alt="Los Angeles">
+                              <div class="carousel-caption">
+                                    <h3>Los Angeles</h3>
+                                    <p>We had such a great time in LA!</p>
+                              </div>
+                        </div>
+                        <?= carousel() ?>
+                  </div>
+
+                  <!-- Left and right controls -->
+                  <a class="carousel-control-prev" href="#demo" data-slide="prev">
+                        <span class="carousel-control-prev-icon"></span>
+                  </a>
+                  <a class="carousel-control-next" href="#demo" data-slide="next">
+                        <span class="carousel-control-next-icon"></span>
+                  </a>
+
+                  </div>
+            
             <br>
 
             <hr>
