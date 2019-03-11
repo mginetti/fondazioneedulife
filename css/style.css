@@ -7,7 +7,6 @@ html, body {
 body {
   font-family: "Helvetica Neue",sans-serif;
   font-weight: lighter;
-  text-align: center;
 }
 
 header {
@@ -24,19 +23,6 @@ header {
 .edu-logo{
   width: auto;
   height: 85px;
-
-.wrapper{
-  width: 100%;  
-  text-align: center;
-}
-
-.content{
-  width: 100%;
-  margin: auto;
-  font-size: 20px;
-  line-height: 30px;
-  text-align: center;
-
 }
 
 .sticky.is-sticky {
@@ -119,14 +105,6 @@ a:hover{
 .img-carousel{
   height: 350px;
   width: auto;
-}
-
-.box{
-  background-color: brown;
-  height: 150px;
-  padding: 5px;
-
-  margin-bottom: 5px;
 }
 
 .project{
