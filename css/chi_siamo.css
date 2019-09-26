@@ -6,7 +6,7 @@ html, body {
 
 body {
   font-family: "Helvetica Neue",sans-serif;
-  font-weight: lighter;
+  font-weight: lighter; 
 }
 
 header {
@@ -14,16 +14,13 @@ header {
   height: 45px;
 }
 
+#spaziatore{
+  height: 30px;
+  width: 100%;
+  }
+
 .wrapper{
   text-align: center;
-}
-
-.content {
-  width: 94%;
-  margin: 4em auto;
-  font-size: 20px;
-  line-height: 30px;
-  text-align: justify;
 }
 
 nav {
@@ -31,13 +28,14 @@ nav {
   width: 100%;
   line-height: 60px;
   text-align: center;
+  z-index: +1;  
 }
 
 nav ul {
-  line-height: 60px;
+  line-height: 40px;
   list-style: none;
   background: rgba(75, 75, 75, 0);
-  overflow: hidden;
+  overflow: auto;
   color: firebrick;
   padding: 0;
   text-align: center;
@@ -48,6 +46,7 @@ nav ul {
 
 nav.black ul {
   background: grey;
+  
 }
 
 nav ul li {
@@ -73,13 +72,25 @@ nav ul li a {
   display: none;
 }
 
+.storia p{
+  text-align: center;
+  color: #c13e50;
+  
+}
 
 
 
+.storia h1{
+  color: #c13e50;
+  text-align: center;
+  font-size: 60px;
+}
 
 footer{
   border-top: 1px solid grey;
   padding: 5px;
+  height: 250px;
+  background-color: pink;
 }
 
 .img-footer{
@@ -87,48 +98,38 @@ footer{
   width: 100%;
 }
 
-
-@media(max-width: 786px) {
-
+@media (max-width: 768px) {
   nav ul {
-        max-height: 0px;
-        background: black;
-  }
-
-  nav.black ul {
-        background: grey;
-  }
-
-  .showing {
-        max-height: 34em;
-  }
-
-  nav ul li {
-        box-sizing: border-box;
-        width: 100%;
-        padding: 24px;
-        text-align: center;
-  }
-
-  .menu-icon {
-        display: block;
-  }
-
-  .logo{
-    height: 150px;
-    width: 150px;
-  }
-}
-.storia p{
-    text-align: center;
-    color: #c13e50;
+    max-height: 0px;
+    background: black;
 }
 
+nav.black ul {
+  background: grey;
+}
 
+.showing {
+  max-height: 34em;
+}
 
-.storia h1{
-    color: #c13e50;
-    text-align: center;
+nav ul li {
+  box-sizing: border-box;
+  width: 100%;
+  padding: 24px;
+  text-align: center;
+}
+
+.menu-icon {
+  display: block;
+}
 
 }
 
+a { 
+  text-decoration: none; color: #333;
+  } 
+  
+
+a:hover { 
+  text-decoration: underline; color: #0080FF; 
+}
